@@ -1,15 +1,40 @@
-// Portfolio.jsx - GitHub Links Added to Projects
+// Portfolio.jsx - GitHub Links Added to Projects + Education Section
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const sections = ["About", "Skills", "Achievements", "Workshops", "Projects"];
+const sections = ["About", "Education", "Skills", "Achievements", "Workshops", "Projects"];
 
 const skills = [
   { category: "Frontend", items: ["HTML5", "CSS3", "JavaScript", "Bootstrap"] },
   { category: "Backend", items: ["Java", "Spring Boot", "Flask", "Python"] },
   { category: "Databases", items: ["MySQL", "MongoDB"] },
   { category: "Tools & Platforms", items: ["Git", "GitHub", "Postman", "VS Code", "Jupyter Notebook", "AWS SageMaker"] }
+];
+
+const education = [
+  {
+    degree: "Bachelor of Engineering in Information Science and Engineering",
+    institution: "Bangalore Institute of Technology (BIT)",
+    location: "Bangalore, India",
+    duration: "2022 – 2026",
+    grade: "9.2 CGPA (Till 7th Semester)",
+    highlights: [
+      "Amazon Scholar, Deutsche Bank Scholar, IET Finalist",
+      "Projects in ML, Java, Spring Boot and Full Stack Development"
+    ]
+  },
+  {
+    degree: "XII std-PCMB (CBSE)",
+    institution: "Jawahar Navodaya Vidyalaya",
+    location: "Hassan, India",
+    duration: "2020– 2022",
+    grade: "88%",
+    highlights: [
+      "Top Performer in Computer Science",
+      "Class Representative and Volunteer in Technical Events"
+    ]
+  }
 ];
 
 const achievements = [
@@ -49,6 +74,25 @@ export default function Portfolio() {
                   {skill.items.map((item, j) => <li key={j}>{item}</li>)}
                 </ul>
               </div>
+            ))}
+          </div>
+        );
+      case "Education":
+        return (
+          <div className="space-y-8 mt-6">
+            {education.map((edu, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white text-black p-6 rounded-xl shadow-lg"
+              >
+                <h3 className="text-2xl font-bold mb-1 font-serif text-center text-gray-800">{edu.degree}</h3>
+                <p className="text-sm text-gray-700 text-center">{edu.institution}, {edu.location}</p>
+                <p className="text-sm italic text-gray-600 text-center">{edu.duration}</p>
+                <p className="text-sm font-semibold mt-2 text-center text-indigo-700">📈 {edu.grade}</p>
+              </motion.div>
             ))}
           </div>
         );
